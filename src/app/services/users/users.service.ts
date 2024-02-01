@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,6 @@ export class UsersService {
   usersUrl = 'https://dummyjson.com/users';
 
   getUsers() {
-    return this.httpClient.get(this.usersUrl);
+    return this.httpClient.get(environment.USERS_URL);
   }
 }
