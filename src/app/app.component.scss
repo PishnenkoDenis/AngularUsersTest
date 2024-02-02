@@ -1,0 +1,16 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 5% 10%;
+  background-color: var(--dark-grey);
+  border: 2px solid var(--dark-blue);
+  border-radius: var(--border-min);
+  box-shadow: 1px 5px 5px var(--middle-blue);
+
+  .wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    width: auto;
+  }
+}

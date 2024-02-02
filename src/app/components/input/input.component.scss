@@ -1,10 +1,10 @@
-.select-container {
+.input-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  #select {
+  #input {
     width: 100%;
     height: var(--middle-size);
     margin: var(--min-size);
@@ -12,7 +12,6 @@
     background-color: var(--light-grey);
     appearance: none;
     border: none;
-    margin: var(--min-size);
 
     &:active,
     &:focus {

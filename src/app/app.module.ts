@@ -10,14 +10,18 @@ import { PostsService } from './services/users/posts.service';
 import { PostComponent } from './components/post/post.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SelectComponent } from './components/select/select.component';
+import { InputComponent } from './components/input/input.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent,
     PostComponent,
     FiltersComponent,
     SelectComponent,
+    UsersComponent,
+    InputComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [UsersService, PostsService],

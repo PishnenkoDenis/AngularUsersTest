@@ -1,8 +1,10 @@
-<div>
-  <div>
+<div class="users-container">
+  <div class="users-title">
     <p>{{ title }}</p>
   </div>
-  <ul>
-    <li *ngFor="let user of users">{{ user.firstName }} {{ user.lastName }}</li>
+  <ul class="users-list">
+    <li *ngFor="let user of users" class="user-item">
+      {{ user.firstName }} {{ user.lastName }}
+    </li>
   </ul>
 </div>

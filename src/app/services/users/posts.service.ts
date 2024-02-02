@@ -8,8 +8,6 @@ import { environment } from '../../../environments/environment';
 export class PostsService {
   constructor(private httpClient: HttpClient) {}
 
-  postsUrl = 'https://dummyjson.com/posts';
-
   getPosts() {
     return this.httpClient.get(environment.POSTS_URL);
   }
