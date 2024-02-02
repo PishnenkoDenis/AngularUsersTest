@@ -1,3 +1,6 @@
-<select #select name="select" id="select" (change)="changeTag(select.value)">
-  <option *ngFor="let option of options" value="{{ option }}"></option>
-</select>
+<div class="select-container">
+  <label for="select" class="label"> Filter by tags: </label>
+  <select #select name="select" id="select" (change)="changeTag(select.value)">
+    <option *ngFor="let option of options" value="{{ option }}"></option>
+  </select>
+</div>

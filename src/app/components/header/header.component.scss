@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: var(--max-size);
+  border-bottom: 2px solid var(--dark-blue);
+
+  .url {
+    width: 60%;
+    height: var(--middle-size);
+    background-color: var(--light-grey);
+    border-radius: 15px;
+    margin-left: var(--max-size);
+  }
+}

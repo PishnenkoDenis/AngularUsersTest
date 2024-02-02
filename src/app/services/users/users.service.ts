@@ -8,8 +8,6 @@ import { environment } from '../../../environments/environment';
 export class UsersService {
   constructor(private httpClient: HttpClient) {}
 
-  usersUrl = 'https://dummyjson.com/users';
-
   getUsers() {
     return this.httpClient.get(environment.USERS_URL);
   }

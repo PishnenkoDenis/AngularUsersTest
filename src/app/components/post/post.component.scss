@@ -1,0 +1,31 @@
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 100%;
+
+  .posts-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--dark-blue);
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--common-size);
+    padding: var(--common-size);
+    list-style-type: none;
+
+    .post-item {
+      border: 1px solid var(--dark-blue);
+      border-radius: var(--border-min);
+      padding: var(--min-size);
+
+      .post-title {
+        font-weight: bold;
+      }
+    }
+  }
+}
