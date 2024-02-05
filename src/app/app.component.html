@@ -1,8 +1,8 @@
 <div class="main-container">
   <app-header></app-header>
   <div class="wrapper">
-    <app-users></app-users>
+    <app-users (onClickedUser)="onSelectedUser($event)"></app-users>
     <app-filters></app-filters>
-    <app-post></app-post>
+    <app-post [userId]="userId"></app-post>
   </div>
 </div>

@@ -11,4 +11,8 @@ export class PostsService {
   getPosts() {
     return this.httpClient.get(environment.POSTS_URL);
   }
+
+  getPostsByUserId(userId: number) {
+    return this.httpClient.get(`${environment.POSTS_URL}/user/${userId}`);
+  }
 }

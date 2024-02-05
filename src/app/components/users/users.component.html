@@ -3,7 +3,11 @@
     <p>{{ title }}</p>
   </div>
   <ul class="users-list">
-    <li *ngFor="let user of users" class="user-item">
+    <li
+      *ngFor="let user of users"
+      class="user-item"
+      (click)="onClickUser(user.id)"
+    >
       {{ user.firstName }} {{ user.lastName }}
     </li>
   </ul>
