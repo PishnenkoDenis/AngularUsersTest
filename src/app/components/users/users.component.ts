@@ -1,10 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 import { Subscription } from 'rxjs';
 
 interface IUser {
   firstName: string;
   lastName: string;
+  id: number;
 }
 
 @Component({
@@ -18,6 +25,8 @@ export class UsersComponent implements OnInit, OnDestroy {
   title = 'Users';
   users: IUser[] = [];
 
+  @Output() onClickedUser = new EventEmitter<number>();
+
   private usersSubscription$ = new Subscription();
 
   ngOnInit(): void {
@@ -25,6 +34,10 @@ export class UsersComponent implements OnInit, OnDestroy {
       (result: any) => (this.users = result.users),
       (error) => console.log(error)
     );
+  }
+
+  onClickUser(id: number) {
+    this.onClickedUser.emit(id);
   }
 
   ngOnDestroy(): void {
