@@ -9,7 +9,7 @@ import {
 import { PostsService } from '../../services/users/posts.service';
 import { Subscription } from 'rxjs';
 
-interface IPost {
+export interface IPost {
   title: string;
   body: string;
   userId: number;
@@ -36,18 +36,18 @@ export class PostComponent implements OnInit, OnDestroy, OnChanges {
       changes['userId'].currentValue &&
       changes['userId'].previousValue !== changes['userId'].currentValue
     ) {
-      this.postSubscriptionsByUserId$ = this.postsService
-        .getPostsByUserId(changes['userId'].currentValue)
-        .subscribe(
-          (result: any) => (this.posts = result.posts),
-          (error) => console.log(error)
-        );
+      this.postsService.getPostsByUserId(changes['userId'].currentValue);
+      this.postSubscriptionsByUserId$ = this.postsService.$posts.subscribe(
+        (result: any) => (this.posts = result),
+        (error) => console.log(error)
+      );
     }
   }
 
   ngOnInit(): void {
-    this.postSubscriptions$ = this.postsService.getPosts().subscribe(
-      (result: any) => (this.posts = result.posts),
+    this.postsService.getPosts();
+    this.postSubscriptions$ = this.postsService.$posts.subscribe(
+      (result: any) => (this.posts = result),
       (error) => console.log(error)
     );
   }

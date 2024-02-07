@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { PostsService } from '../../services/users/posts.service';
 
 @Component({
   selector: 'app-input',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit {
-  constructor() {}
+  constructor(private postsService: PostsService) {}
+  @ViewChild('title', { static: false }) title: ElementRef | undefined;
 
   ngOnInit(): void {}
+
+  onChangeInput(value: string) {
+    this.postsService.getPostsByTitle(value);
+    if (this.title?.nativeElement.value) this.title.nativeElement.value = '';
+  }
 }
