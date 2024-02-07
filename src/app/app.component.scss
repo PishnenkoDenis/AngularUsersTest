@@ -12,5 +12,9 @@
     display: flex;
     flex: 1 1 auto;
     width: auto;
+
+    .posts {
+      width: 100%;
+    }
   }
 }
