@@ -22,5 +22,11 @@
     .user-item {
       cursor: pointer;
     }
+
+    .selected-user {
+      background: var(--deep-dark-grey);
+      border: 1px solid var(--dark-blue);
+      color: var(--light-grey);
+    }
   }
 }
