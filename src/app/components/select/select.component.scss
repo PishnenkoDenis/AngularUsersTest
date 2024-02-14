@@ -4,15 +4,18 @@
   justify-content: center;
   align-items: center;
 
-  #select {
+  select {
     width: 100%;
     height: var(--middle-size);
     margin: var(--min-size);
     border-radius: var(--border-min);
     background-color: var(--light-grey);
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     border: none;
     margin: var(--min-size);
+    padding-left: var(--min-size);
 
     &:active,
     &:focus {
@@ -21,6 +24,16 @@
 
     &:focus {
       border: 1px solid var(--input-dark);
+    }
+
+    option {
+      appearance: none;
+      -webkit-appearance: none;
+
+      &:focus {
+        background: var(--middle-blue);
+        color: var(--light-grey);
+      }
     }
   }
 }

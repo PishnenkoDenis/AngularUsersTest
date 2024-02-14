@@ -24,8 +24,9 @@
     }
 
     .selected-user {
-      background: var(--deep-dark-grey);
-      border: 1px solid var(--dark-blue);
+      background: var(--middle-blue);
+      border-radius: var(--border-min);
+      padding: var(--min-size);
       color: var(--light-grey);
     }
   }
