@@ -1,16 +1,22 @@
 .header {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: var(--max-size);
   border-bottom: 2px solid var(--dark-blue);
+  gap: 3rem;
 
   .url {
     width: 60%;
     height: var(--middle-size);
     background-color: var(--light-grey);
     border-radius: 15px;
-    margin-left: var(--max-size);
+    margin-left: var(--middle-size);
+    color: var(--dark-blue);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 1rem;
   }
 }

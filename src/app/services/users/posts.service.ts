@@ -13,6 +13,7 @@ export class PostsService {
   $posts: BehaviorSubject<IPost[]> = new BehaviorSubject<IPost[]>([]);
   $tags: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   $selectedTag: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  $currentUrl: BehaviorSubject<string> = new BehaviorSubject<string>('');
   posts: IPost[] = [];
   tags: string[] = [];
   selected: string | undefined = '';
@@ -25,6 +26,7 @@ export class PostsService {
         this.tags = this.extractTags(this.posts);
         this.$posts.next(this.posts);
         this.$tags.next(this.tags);
+        this.$currentUrl.next(`${environment.POSTS_URL}`);
       });
   }
 
@@ -41,8 +43,8 @@ export class PostsService {
     return this.httpClient
       .get(`${environment.POSTS_URL}/user/${userId}`)
       .subscribe((result: any) => {
-        this.posts = result.posts;
-        this.$posts.next(this.posts);
+        this.$currentUrl.next(`${environment.POSTS_URL}/user/${userId}`);
+        this.$posts.next(result.posts);
       });
   }
 
@@ -60,5 +62,10 @@ export class PostsService {
     );
     if (postsFilterd.length) this.$posts.next(postsFilterd);
     else this.$posts.next([]);
+  }
+
+  resetPosts() {
+    this.$posts.next(this.posts);
+    this.$currentUrl.next(`${environment.POSTS_URL}`);
   }
 }

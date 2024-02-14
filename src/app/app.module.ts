@@ -14,6 +14,7 @@ import { InputComponent } from './components/input/input.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SelectedDirective } from './directives/selected.directive';
 import { ClickedDirective } from './directives/clicked.directive';
+import { ResetButtonComponent } from './components/reset/reset-button/reset-button.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ClickedDirective } from './directives/clicked.directive';
     HeaderComponent,
     SelectedDirective,
     ClickedDirective,
+    ResetButtonComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [UsersService, PostsService],
