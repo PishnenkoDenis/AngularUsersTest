@@ -13,6 +13,7 @@ import { SelectComponent } from './components/select/select.component';
 import { InputComponent } from './components/input/input.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SelectedDirective } from './directives/selected.directive';
+import { ClickedDirective } from './directives/clicked.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SelectedDirective } from './directives/selected.directive';
     InputComponent,
     HeaderComponent,
     SelectedDirective,
+    ClickedDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [UsersService, PostsService],

@@ -7,6 +7,7 @@
       *ngFor="let user of users"
       class="user-item"
       (click)="onClickUser(user.id)"
+      appClicked
     >
       {{ user.firstName }} {{ user.lastName }}
     </li>
