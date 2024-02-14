@@ -23,8 +23,14 @@
       border-radius: var(--border-min);
       padding: var(--min-size);
 
-      .post-title {
+      .post-title,
+      .selected-tag {
         font-weight: bold;
+      }
+
+      .post-tags {
+        display: flex;
+        gap: 1rem;
       }
     }
   }

@@ -12,6 +12,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { SelectComponent } from './components/select/select.component';
 import { InputComponent } from './components/input/input.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SelectedDirective } from './directives/selected.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HeaderComponent } from './components/header/header.component';
     UsersComponent,
     InputComponent,
     HeaderComponent,
+    SelectedDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [UsersService, PostsService],

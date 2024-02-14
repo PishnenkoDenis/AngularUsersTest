@@ -13,6 +13,7 @@ export interface IPost {
   title: string;
   body: string;
   userId: number;
+  tags: string[];
 }
 
 @Component({
@@ -24,7 +25,9 @@ export class PostComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private postsService: PostsService) {}
 
   title = 'Posts';
+  tagsTitle = 'tags:';
   posts: IPost[] = [];
+  tags: string[] = [];
 
   @Input() userId: number | null = null;
 
