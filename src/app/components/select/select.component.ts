@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TTags } from '../filters/filters.component';
+import { Component, Input, OnInit } from '@angular/core';
+import { PostsService } from '../../services/users/posts.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-select',
@@ -7,15 +8,25 @@ import { TTags } from '../filters/filters.component';
   styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent implements OnInit {
-  @Input() options: Array<TTags> = [];
+  @Input() options: string[] = [];
 
-  @Output() ChangedTag = new EventEmitter<string | number>();
+  constructor(private postsService: PostsService) {}
 
-  constructor() {}
+  private unsubscriber$ = new Subject<void>();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.postsService.$tags.pipe(takeUntil(this.unsubscriber$)).subscribe(
+      (tags: string[]) => (this.options = tags),
+      (error) => console.log(error)
+    );
+  }
 
-  changeTag(value: string | number) {
-    this.ChangedTag.emit(value);
+  changeTag(value: string) {
+    this.postsService.getpostsByTag(value);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscriber$.next();
+    this.unsubscriber$.complete();
   }
 }

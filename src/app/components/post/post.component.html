@@ -6,6 +6,12 @@
     <li *ngFor="let post of posts" class="post-item">
       <p class="post-title">{{ post.title }}</p>
       <p>{{ post.body }}</p>
+      <div class="post-tags">
+        <p class="post-title">{{ tagsTitle }}</p>
+        <p *ngFor="let tag of post.tags" appSelected selectedTag="{{ tag }}">
+          {{ tag }}
+        </p>
+      </div>
     </li>
   </ul>
 </div>

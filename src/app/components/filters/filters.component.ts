@@ -1,31 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-
-export type TTags =
-  | 'magical'
-  | 'crime'
-  | 'history'
-  | 'american'
-  | 'french'
-  | 'english';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss'],
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent implements OnInit, OnDestroy {
   constructor() {}
 
   title = 'Filters';
 
-  tags: Array<TTags> = [
-    'magical',
-    'crime',
-    'history',
-    'american',
-    'french',
-    'english',
-  ];
-
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {}
 }

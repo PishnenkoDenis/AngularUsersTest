@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, debounce, interval, mergeMap } from 'rxjs';
 import { IPost } from '../../components/post/post.component';
 
 @Injectable({
@@ -11,15 +11,30 @@ export class PostsService {
   constructor(private httpClient: HttpClient) {}
 
   $posts: BehaviorSubject<IPost[]> = new BehaviorSubject<IPost[]>([]);
+  $tags: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  $selectedTag: BehaviorSubject<string> = new BehaviorSubject<string>('');
   posts: IPost[] = [];
+  tags: string[] = [];
+  selected: string | undefined = '';
 
   getPosts() {
     return this.httpClient
       .get(environment.POSTS_URL)
       .subscribe((result: any) => {
         this.posts = result.posts;
+        this.tags = this.extractTags(this.posts);
         this.$posts.next(this.posts);
+        this.$tags.next(this.tags);
       });
+  }
+
+  extractTags(arr: IPost[]): string[] {
+    const res = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      res.push(...arr[i].tags);
+    }
+    return Array.from(new Set(res));
   }
 
   getPostsByUserId(userId: number) {
@@ -29,6 +44,14 @@ export class PostsService {
         this.posts = result.posts;
         this.$posts.next(this.posts);
       });
+  }
+
+  getpostsByTag(value: string) {
+    const filterd = this.posts.filter((post) => post.tags.includes(value));
+    this.selected = this.tags.find((tag) => tag === value);
+    if (this.selected) this.$selectedTag.next(this.selected);
+    if (filterd.length) this.$posts.next(filterd);
+    else this.$posts.next([]);
   }
 
   getPostsByTitle(value: string) {
