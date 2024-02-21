@@ -18,5 +18,9 @@
     justify-content: start;
     align-items: center;
     padding-left: 1rem;
+
+    & p {
+      margin: 0;
+    }
   }
 }

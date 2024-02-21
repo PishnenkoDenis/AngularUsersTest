@@ -1,0 +1,16 @@
+.my-pagination::ng-deep .pagination li {
+  & a {
+    color: var(--dark-blue);
+    background-color: var(--light-grey);
+  }
+}
+
+.my-pagination::ng-deep .pagination {
+  --bs-pagination-focus-box-shadow: 0 0 0.25rem var(--input-dark);
+}
+
+.my-pagination::ng-deep .pagination .active {
+  & a {
+    border-color: var(--dark-blue);
+  }
+}
