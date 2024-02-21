@@ -3,7 +3,12 @@
     <p>{{ title }}</p>
   </div>
   <ul class="post-list">
-    <li *ngFor="let post of posts" class="post-item">
+    <li
+      *ngFor="
+        let post of posts | slice : (page - 1) * pageSize : page * pageSize
+      "
+      class="post-item"
+    >
       <p class="post-title">{{ post.title }}</p>
       <p>{{ post.body }}</p>
       <div class="post-tags">
@@ -14,4 +19,10 @@
       </div>
     </li>
   </ul>
+  <app-pagination
+    class="pgn"
+    [page]="page"
+    [pageSize]="pageSize"
+    (changedPage)="onChangePage($event)"
+  ></app-pagination>
 </div>

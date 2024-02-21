@@ -8,7 +8,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent implements OnInit {
-  @Input() options: string[] = [];
+  options: string[] = [];
 
   constructor(private postsService: PostsService) {}
 

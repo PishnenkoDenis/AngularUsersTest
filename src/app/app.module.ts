@@ -15,6 +15,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { SelectedDirective } from './directives/selected.directive';
 import { ClickedDirective } from './directives/clicked.directive';
 import { ResetButtonComponent } from './components/reset/reset-button/reset-button.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,13 @@ import { ResetButtonComponent } from './components/reset/reset-button/reset-butt
     ClickedDirective,
     ResetButtonComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    PaginationComponent,
+  ],
   providers: [UsersService, PostsService],
   bootstrap: [AppComponent],
 })

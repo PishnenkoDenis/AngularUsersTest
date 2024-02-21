@@ -14,6 +14,7 @@ export class PostsService {
   $tags: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   $selectedTag: BehaviorSubject<string> = new BehaviorSubject<string>('');
   $currentUrl: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  $postsSize: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   posts: IPost[] = [];
   tags: string[] = [];
   selected: string | undefined = '';
@@ -26,6 +27,7 @@ export class PostsService {
         this.tags = this.extractTags(this.posts);
         this.$posts.next(this.posts);
         this.$tags.next(this.tags);
+        this.$postsSize.next(result.posts.length);
         this.$currentUrl.next(`${environment.POSTS_URL}`);
       });
   }

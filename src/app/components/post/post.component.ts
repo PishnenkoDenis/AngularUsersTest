@@ -28,6 +28,9 @@ export class PostComponent implements OnInit, OnDestroy, OnChanges {
   tagsTitle = 'tags:';
   posts: IPost[] = [];
   tags: string[] = [];
+  pageSize = 5;
+  collectionSize = 0;
+  page = 1;
 
   @Input() userId: number | null = null;
 
@@ -50,7 +53,10 @@ export class PostComponent implements OnInit, OnDestroy, OnChanges {
   ngOnInit(): void {
     this.postsService.getPosts();
     this.postSubscriptions$ = this.postsService.$posts.subscribe(
-      (result: any) => (this.posts = result),
+      (result: any) => {
+        this.posts = result;
+        this.collectionSize = this.posts.length;
+      },
       (error) => console.log(error)
     );
   }
@@ -58,5 +64,9 @@ export class PostComponent implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy(): void {
     this.postSubscriptions$.unsubscribe();
     this.postSubscriptionsByUserId$.unsubscribe();
+  }
+
+  onChangePage(event: number) {
+    this.page = event;
   }
 }
